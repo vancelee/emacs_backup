@@ -1,0 +1,42 @@
+;; my emacs settings
+;; 2011-04-25
+
+;;加载设置
+(add-to-list 'load-path "/home/vance/emacsmy")
+
+;;字体设置
+(set-language-environment 'UTF-8) 
+(set-locale-environment "UTF-8") 
+(set-default-font "Monaco-11") 
+(set-fontset-font "fontset-default" 'gb18030 '("WenQuanYi Micro Hei Mono" . "unicode-bmp"))
+
+;;基本设置
+(require 'base-settings)
+
+;;自动补全
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/emacsmy/ac-dict")
+(ac-config-default)
+;;禁用自动补全
+(setq ac-auto-start nil)
+;; "M-/" 打开自动补全
+(global-set-key "\M-/" 'auto-complete)
+
+;;html-helper-mode
+(autoload 'html-helper-mode "html-helper-mode" "Yay HTML" t)
+(setq auto-mode-alist (cons '("\\.html$" . html-helper-mode) auto-mode-alist))
+;; Insert new document HTML template
+(setq html-helper-build-new-buffer t)
+;;js2-mode
+(autoload 'js2-mode "js2" nil t)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+;;org-mode
+(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+;;php-mode
+(require 'php-mode)
+
+;;colot-theme-setting
+(require 'color-theme-tangotango)
+(require 'color-theme)
+(color-theme-initialize)
+(color-theme-tangotango)
