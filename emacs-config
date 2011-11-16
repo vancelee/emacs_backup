@@ -2,16 +2,25 @@
 ;; 2011-04-25
 
 ;;加载设置
-(add-to-list 'load-path "/home/vance/emacsmy")
+(add-to-list 'load-path "~/emacsmy")
 
 ;;字体设置
 (set-language-environment 'UTF-8) 
 (set-locale-environment "UTF-8") 
 (set-default-font "Monaco-11") 
-(set-fontset-font "fontset-default" 'gb18030 '("WenQuanYi Micro Hei Mono" . "unicode-bmp"))
+(set-fontset-font "fontset-default" 'gb18030 '("FZZhunYuan-M02" . "unicode-bmp"))
+
+;;配色设置
+(require 'color-theme-tangotango)
+(require 'color-theme)
+(color-theme-initialize)
+(color-theme-tangotango)
 
 ;;基本设置
 (require 'base-settings)
+
+;;键绑定设置
+(require 'my-keybindings)
 
 ;;自动补全
 (require 'auto-complete-config)
@@ -19,8 +28,6 @@
 (ac-config-default)
 ;;禁用自动补全
 (setq ac-auto-start nil)
-;; "M-/" 打开自动补全
-(global-set-key "\M-/" 'auto-complete)
 
 ;;html-helper-mode
 (autoload 'html-helper-mode "html-helper-mode" "Yay HTML" t)
@@ -35,8 +42,10 @@
 ;;php-mode
 (require 'php-mode)
 
-;;colot-theme-setting
-(require 'color-theme-tangotango)
-(require 'color-theme)
-(color-theme-initialize)
-(color-theme-tangotango)
+;; Org-mode
+;; 只高亮显示最后一个代表层级的*
+(setq org-hide-leading-stars t)
+;; C-c a 进入日程表
+(define-key global-map "\C-ca" 'org-agenda)
+;; 给已完成事项打上时间戳。可选 note，附加注释
+(setq org-log-done 'time)
