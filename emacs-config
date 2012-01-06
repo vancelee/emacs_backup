@@ -7,8 +7,13 @@
 ;;字体设置
 (set-language-environment 'UTF-8) 
 (set-locale-environment "UTF-8") 
-(set-default-font "Monaco-11") 
-(set-fontset-font "fontset-default" 'gb18030 '("FZZhunYuan-M02" . "unicode-bmp"))
+;; Setting English Font
+(set-face-attribute 'default nil :font "Monaco 12")
+;; Chinese Font
+(set-fontset-font
+    (frame-parameter nil 'font)
+    'han
+    (font-spec :family "文泉驿微米黑" :size 20))
 
 ;;配色设置
 (require 'color-theme-tangotango)
@@ -30,10 +35,10 @@
 (setq ac-auto-start nil)
 
 ;;html-helper-mode
-(autoload 'html-helper-mode "html-helper-mode" "Yay HTML" t)
-(setq auto-mode-alist (cons '("\\.html$" . html-helper-mode) auto-mode-alist))
+;(autoload 'html-helper-mode "html-helper-mode" "Yay HTML" t)
+;(setq auto-mode-alist (cons '("\\.html$" . html-helper-mode) auto-mode-alist))
 ;; Insert new document HTML template
-(setq html-helper-build-new-buffer t)
+;;(setq html-helper-build-new-buffer t)
 ;;js2-mode
 (autoload 'js2-mode "js2" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
@@ -43,9 +48,25 @@
 (require 'php-mode)
 
 ;; Org-mode
-;; 只高亮显示最后一个代表层级的*
-(setq org-hide-leading-stars t)
 ;; C-c a 进入日程表
 (define-key global-map "\C-ca" 'org-agenda)
 ;; 给已完成事项打上时间戳。可选 note，附加注释
 (setq org-log-done 'time)
+;; 解决org中文不会自动折行
+(add-hook 'org-mode-hook 
+(lambda () (setq truncate-lines nil)))
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(org-agenda-files (quote ("~/backup/org/gtd.test.org"))))
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ )
+;; 关闭 preamble 和 postamble
+(setq org-export-html-preamble nil)
+(setq org-export-html-postamble nil)
