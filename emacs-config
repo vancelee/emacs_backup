@@ -1,25 +1,38 @@
 ;; my emacs settings
-;; 2011-04-25
+;; Vance Lee@<2011-04-25>
+;; Last Modified: <2012-06-22>
 
 ;;加载设置
-(add-to-list 'load-path "~/emacsmy")
+(add-to-list 'load-path "~/.emacsmy")
+(setq load-path (cons "~/.emacsmy/org2blog" load-path))
+(add-to-list 'custom-theme-load-path "~/.emacsmy/themes")
 
 ;;字体设置
-(set-language-environment 'UTF-8) 
-(set-locale-environment "UTF-8") 
+(set-language-environment 'UTF-8)
+(set-locale-environment "UTF-8")
 ;; Setting English Font
-(set-face-attribute 'default nil :font "Monaco 12")
+(if window-system
+  (set-face-attribute 'default nil :font "Liberation Mono-11"))
 ;; Chinese Font
-(set-fontset-font
-    (frame-parameter nil 'font)
-    'han
-    (font-spec :family "文泉驿微米黑" :size 20))
+(if window-system
+  (set-fontset-font nil 'han "WenQuaYi Micro Hei Mono"))
 
-;;配色设置
-(require 'color-theme-tangotango)
-(require 'color-theme)
-(color-theme-initialize)
-(color-theme-tangotango)
+;;不要menu-bar
+(unless window-system
+  (menu-bar-mode -1))
+;;不要toolbar
+(tool-bar-mode -1)
+;;滚动条在右面
+(set-scroll-bar-mode 'right)
+;;不显示Emacs的开始画面
+(setq inhibit-startup-message t)
+(setq initial-scratch-message "")
+;;Frame Size
+(if window-system
+    (set-frame-size (selected-frame) 85 35))
+
+;;主题设置
+(load-theme 'mycustom t)
 
 ;;基本设置
 (require 'base-settings)
@@ -27,46 +40,13 @@
 ;;键绑定设置
 (require 'my-keybindings)
 
+;;加载mode和mode设置
+(require 'load-modes)
+
 ;;自动补全
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/emacsmy/ac-dict")
+(add-to-list 'ac-dictionary-directories "~/.emacsmy/ac-dict")
 (ac-config-default)
-;;禁用自动补全
-(setq ac-auto-start nil)
-
-;;html-helper-mode
-;(autoload 'html-helper-mode "html-helper-mode" "Yay HTML" t)
-;(setq auto-mode-alist (cons '("\\.html$" . html-helper-mode) auto-mode-alist))
-;; Insert new document HTML template
-;;(setq html-helper-build-new-buffer t)
-;;js2-mode
-(autoload 'js2-mode "js2" nil t)
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-;;org-mode
-(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
-;;php-mode
-(require 'php-mode)
-
-;; Org-mode
-;; C-c a 进入日程表
-(define-key global-map "\C-ca" 'org-agenda)
-;; 给已完成事项打上时间戳。可选 note，附加注释
-(setq org-log-done 'time)
-;; 解决org中文不会自动折行
-(add-hook 'org-mode-hook 
-(lambda () (setq truncate-lines nil)))
-(custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(org-agenda-files (quote ("~/backup/org/gtd.test.org"))))
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )
-;; 关闭 preamble 和 postamble
-(setq org-export-html-preamble nil)
-(setq org-export-html-postamble nil)
+(global-auto-complete-mode t)
+;; start completion when entered 3 characters
+;;(setq ac-auto-start 3)
