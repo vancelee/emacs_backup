@@ -27,27 +27,28 @@
 ;; 设置默认主题
 (set-face-attribute 'tabbar-default nil
                     :family "DejaVu Sans Mono"
-                    :background "#c6c6c6"
-                    :foreground "#262626"
-                    :height 1.0
+                    :background "#d0d0d0"
+                    :foreground "#d0d0d0"
+                    :height 0.8
                     )
 ;; 设置左边按钮
 (set-face-attribute 'tabbar-button nil
                     :inherit 'tabbar-default
-                    :box '(:line-width 1 :color "#808080")
+                    :box '(:line-width 1 :color "#bcbcbc")
                     )
 ;; 设置当前tab
 (set-face-attribute 'tabbar-selected nil
                     :inherit 'tabbar-default
-                    :foreground "#262626"
-                    :background "#e4e4e4"
-                    :box '(:line-width 1 :color "#808080")
-                    ;;:weight 'bold
+                    :foreground "#eeeeee"
+                    :background "#5f005f"
+                    :box '(:line-width 2 :color "#5f005f")
+                    :weight 'bold
                     )
 ;; 设置非当前tab
 (set-face-attribute 'tabbar-unselected nil
                     :inherit 'tabbar-default
-                    :box '(:line-width 1 :color "#808080")
+                    :background "#5f005f"
+                    :box '(:line-width 2 :color "#5f005f")
                     )
 
 ;;php-mode
