@@ -1,6 +1,6 @@
 ;; base-settings.el -- base emacs setting
 ;; Vance Lee <2011-11-16>
-;; Last Modified: <2012-06-22>
+;; Last Modified: <2013-02-03>
 
 ;;在fringe上显示一个小箭头指示当前buffer的边界
 (setq-default indicate-buffer-boundaries 'left)
@@ -16,8 +16,8 @@
 (setq default-major-mode 'text-mode)
 
 ;;显示列号和行号
-;(setq column-number-mode t)
-;(global-linum-mode 1)
+;;(setq column-number-mode t)
+;;(global-linum-mode 1)
 
 ;;语法高亮
 (autoload 'toggle-emacs-lock "emacs-lock" "Emacs lock" t)
@@ -34,9 +34,9 @@
 (blink-cursor-mode -1)
 
 ;;滚动页面时比较舒服，不要整页的滚动
-;(setq scroll-step 1
-;  scroll-margin 2
-;  scroll-conservatively 10000)
+(setq scroll-step 1
+  scroll-margin 2
+  scroll-conservatively 10000)
 
 ;;没有提示音,也不闪屏
 (setq ring-bell-function 'ignore)

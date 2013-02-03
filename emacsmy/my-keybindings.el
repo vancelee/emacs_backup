@@ -1,6 +1,6 @@
 ;; my-keybindings.el --- My key bindings setting
 ;; Vance Lee <2011-11-16>
-;; Last Modified: <2012-06-22>
+;; Last Modified: <2013-02-03>
 
 ;; window switch
 (global-set-key (kbd "C-x <up>") 'windmove-up)
@@ -16,10 +16,10 @@
 (global-set-key [f9] 'org-toggle-inline-images)
 ;; 打开mynote
 (global-set-key [f10]
-    '(lambda () (interactive) (find-file "~/Dropbox/org/mynote.org")))
+    '(lambda () (interactive) (find-file "~/Dropbox/org/todo.org")))
 ;; 打开TODO LIST
 (global-set-key [f11]
-    '(lambda () (interactive) (find-file "~/Dropbox/org/mygtd.org")))
+    '(lambda () (interactive) (find-file "~/Dropbox/org/idea.org")))
 ;; remember
 (global-set-key [f12] 'org-remember)
 
@@ -33,13 +33,10 @@
 ;; Mark set
 (global-set-key (kbd "C-0") 'set-mark-command)
 
-;; PHP mode
-(global-set-key (kbd "C-c p") 'php-mode)
+;; javascript mode
+(global-set-key (kbd "C-c j") 'js-mode)
 
 ;; HTML mode
-(global-set-key (kbd "C-c h") 'html-helper-mode)
-
-;; list color
-(global-set-key (kbd "C-c c") 'list-colors-display)
+(global-set-key (kbd "C-c h") 'html-mode)
 
 (provide 'my-keybindings)

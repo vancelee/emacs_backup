@@ -1,5 +1,6 @@
 ;; load-modes.el -- load modes setting
 ;; Vance Lee <2012-03-28>
+;; Last Modified: <2013-02-03>
 
 ;; sr-speedbar
 (require 'sr-speedbar)
@@ -11,23 +12,57 @@
 (require 'ido)
 (ido-mode t)
 
+;; tabbar
+(require 'tabbar)
+(tabbar-mode t)
+;; tabbar group
+(setq tabbar-buffer-groups-function
+      (lambda ()
+        (list "All Buffers")))
+(setq tabbar-buffer-list-function
+      (lambda ()
+        (remove-if
+         (lambda(buffer)
+           (find (aref (buffer-name buffer) 0) " *"))
+         (buffer-list))))
+;; 设置默认主题
+(set-face-attribute 'tabbar-default nil
+                    :family "DejaVu Sans Mono"
+                    :background "#c6c6c6"
+                    :foreground "#262626"
+                    :height 1.0
+                    )
+;; 设置左边按钮
+(set-face-attribute 'tabbar-button nil
+                    :inherit 'tabbar-default
+                    :box '(:line-width 1 :color "#808080")
+                    )
+;; 设置当前tab
+(set-face-attribute 'tabbar-selected nil
+                    :inherit 'tabbar-default
+                    :foreground "#262626"
+                    :background "#e4e4e4"
+                    :box '(:line-width 1 :color "#808080")
+                    ;;:weight 'bold
+                    )
+;; 设置非当前tab
+(set-face-attribute 'tabbar-unselected nil
+                    :inherit 'tabbar-default
+                    :box '(:line-width 1 :color "#808080")
+                    )
+
 ;;php-mode
 (require 'php-mode)
 
 ;;html helper mode
-(autoload 'html-helper-mode "html-helper-mode" "Yay HTML" t)
+;;(autoload 'html-helper-mode "html-helper-mode" "Yay HTML" t)
 
-;;multi web mode
-;;(require 'multi-web-mode)
-;;(setq mweb-default-major-mode 'html-helper-mode)
-;;(setq mweb-tags '((php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
-;;                  (js-mode "<script +\\(type=\"text/javascript\"\\|language=\"javascript\"\\)[^>]*>" "</script>")
-;;                  (css-mode "<style +type=\"text/css\"[^>]*>" "</style>")))
-;;(setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
-;;(multi-web-global-mode 1)
+;; js2-mode
+(autoload 'js2-mode "js2-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
 ;;org-mode
-;;(require 'org-install)
+(require 'org-install)
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 ;; export HTML style
 (setq org-export-html-style-include-default nil)
@@ -52,11 +87,8 @@
 (setq remember-handler-functions '(org-remember-handler))
 (add-hook 'remember-mode-hook 'org-remember-apply-template)
 (setq org-remember-templates
- '(("weiqi" ?w "*** 1-nn%?\n[[~/Dropbox/sihuo/1-nn.png]]" "~/Dropbox/org/mygtd.org" "死活练习")
-   ("Idea" ?i "*** %? " "~/Dropbox/org/mygtd.org" "idea/maybe")
-   ("TODO" ?t "*** TODO %?" "~/Dropbox/org/mygtd.org" "Task")
-   ("Enote" ?e "*** %? %^g" "~/Dropbox/org/mynote.org" "june 2012")
-   ("JS" ?j "*** %? %^g" "~/Dropbox/org/js-note.org" "JavaScript Note")
+   '(("Todo" ?t "** TODO %? " "~/Dropbox/org/todo.org" "Todo List")
+   ("Idea" ?i "** %?" "~/Dropbox/org/idea.org" "Idea List")
    ))
 
 ;; org2blog (org2blog depends on xml-rpc)
@@ -84,5 +116,10 @@
   (setq interprogram-cut-function 'xsel-cut-function)
   (setq interprogram-paste-function 'xsel-paste-function)
  ))
+
+;; markdown mode 
+(autoload 'markdown-mode "markdown-mode"
+  "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 (provide 'load-modes)

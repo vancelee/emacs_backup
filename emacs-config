@@ -1,21 +1,22 @@
 ;; my emacs settings
 ;; Vance Lee@<2011-04-25>
-;; Last Modified: <2012-06-22>
+;; Last Modified: <2013-02-03>
 
 ;;加载设置
 (add-to-list 'load-path "~/.emacsmy")
 (setq load-path (cons "~/.emacsmy/org2blog" load-path))
 (add-to-list 'custom-theme-load-path "~/.emacsmy/themes")
+(setq load-path (cons "~/.emacsmy/org-7.9.3e/lisp" load-path))
 
 ;;字体设置
 (set-language-environment 'UTF-8)
 (set-locale-environment "UTF-8")
 ;; Setting English Font
 (if window-system
-  (set-face-attribute 'default nil :font "Liberation Mono-11"))
+  (set-face-attribute 'default nil :font "Monaco-11"))
 ;; Chinese Font
 (if window-system
-  (set-fontset-font nil 'han "WenQuaYi Micro Hei Mono"))
+  (set-fontset-font nil 'han "FZZhunYuan-M02"))
 
 ;;不要menu-bar
 (unless window-system
@@ -30,9 +31,11 @@
 ;;Frame Size
 (if window-system
     (set-frame-size (selected-frame) 85 35))
+;; 高亮当前行
+(global-hl-line-mode t)
 
 ;;主题设置
-(load-theme 'mycustom t)
+(load-theme 'mycustom2 t)
 
 ;;基本设置
 (require 'base-settings)
@@ -49,4 +52,4 @@
 (ac-config-default)
 (global-auto-complete-mode t)
 ;; start completion when entered 3 characters
-;;(setq ac-auto-start 3)
+(setq ac-auto-start 3)
