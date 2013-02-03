@@ -14,7 +14,6 @@
 
 ;; tabbar
 (require 'tabbar)
-(tabbar-mode t)
 ;; tabbar group
 (setq tabbar-buffer-groups-function
       (lambda ()

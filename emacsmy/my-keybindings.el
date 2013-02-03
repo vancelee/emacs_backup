@@ -13,7 +13,7 @@
 (global-set-key [f8] 'sr-speedbar-open)
 
 ;; 打开inline images
-(global-set-key [f9] 'org-toggle-inline-images)
+(global-set-key [f9] 'tabbar-mode)
 ;; 打开mynote
 (global-set-key [f10]
     '(lambda () (interactive) (find-file "~/Dropbox/org/todo.org")))
