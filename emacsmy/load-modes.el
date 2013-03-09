@@ -91,17 +91,6 @@
    ("Idea" ?i "** %?" "~/Dropbox/org/idea.org" "Idea List")
    ))
 
-;; org2blog (org2blog depends on xml-rpc)
-(require 'org2blog-autoloads)
-;; org2bolg settings
- (setq org2blog/wp-blog-alist
-       '(("wordpress"
-          :url "http://vancel1.info/xmlrpc.php"
-          :username "vancel1"
-          :default-title "Hello World"
-          :default-categories ("emacs")
-          :tags-as-categories nil)))
-
 ;; use xsel to copy/paste in emacs-nox
 (unless window-system
  (when (getenv "DISPLAY")
