@@ -1,2 +1,1 @@
 ## backup of my emacs settings
-<2011-07-05>
