@@ -2,9 +2,15 @@
 ;; Vance Lee@<2011-04-25>
 ;; Last Modified: <2013-02-03>
 
+;;for windows
+(if (eq system-type 'windows-nt)
+    (progn
+      (setenv "HOME" "D:/home")
+      (setenv "PATH" "D:/home")
+      (setq default-directory "~/")))
+
 ;;加载设置
 (add-to-list 'load-path "~/.emacsmy")
-(setq load-path (cons "~/.emacsmy/org2blog" load-path))
 (add-to-list 'custom-theme-load-path "~/.emacsmy/themes")
 (setq load-path (cons "~/.emacsmy/org-7.9.3e/lisp" load-path))
 
