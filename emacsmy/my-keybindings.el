@@ -3,17 +3,16 @@
 ;; Last Modified: <2013-02-03>
 
 ;; window switch
-(global-set-key (kbd "C-x <up>") 'windmove-up)
-(global-set-key (kbd "C-x <down>") 'windmove-down)
-(global-set-key (kbd "C-x <right>") 'windmove-right)
-(global-set-key (kbd "C-x <left>") 'windmove-left)
+;;(global-set-key (kbd "C-x <up>") 'windmove-up)
+;;(global-set-key (kbd "C-x <down>") 'windmove-down)
+;;(global-set-key (kbd "C-x <right>") 'windmove-right)
+;;(global-set-key (kbd "C-x <left>") 'windmove-left)
 
-;; f9-f12 打开应用
 ;; 打开 sr-speedbar
 (global-set-key [f8] 'sr-speedbar-open)
 
-;; 打开inline images
 (global-set-key [f9] 'tabbar-mode)
+
 ;; 打开mynote
 (global-set-key [f10]
     '(lambda () (interactive) (find-file "~/Dropbox/org/todo.org")))

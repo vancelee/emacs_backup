@@ -2,9 +2,6 @@
 ;; Vance Lee <2011-11-16>
 ;; Last Modified: <2013-02-03>
 
-;;在fringe上显示一个小箭头指示当前buffer的边界
-(setq-default indicate-buffer-boundaries 'left)
-
 ;;尽快显示按键序列
 (setq echo-keystrokes 0.1)
 (setq system-time-locale "C")
@@ -16,11 +13,17 @@
 (setq default-major-mode 'text-mode)
 
 ;;显示列号和行号
-;;(setq column-number-mode t)
 ;;(global-linum-mode 1)
+;;(setq linum-format "%d ")
 
 ;;语法高亮
 (autoload 'toggle-emacs-lock "emacs-lock" "Emacs lock" t)
+
+;;自动补全括号
+(electric-pair-mode t)
+
+;;自动匹配括号
+(show-paren-mode t)
 
 ;;启用以下功能
 ;(put 'narrow-to-region 'disabled nil)
@@ -37,6 +40,7 @@
 (setq scroll-step 1
   scroll-margin 2
   scroll-conservatively 10000)
+;;(setq auto-window-vscroll nil)
 
 ;;没有提示音,也不闪屏
 (setq ring-bell-function 'ignore)
@@ -52,26 +56,18 @@
 (setq kill-do-not-save-duplicates t)
 
 ;;tab宽度
-(setq-default indent-tabs-mode nil)
+(setq indent-tabs-mode t)
+(setq indent-line-function 'insert-tab)
 (setq-default tab-width 4)
-(setq-default c-basic-offset 4)
 (setq tab-always-indent 'complete)
+
 ;; tab-stop-list M-i
 (setq tab-stop-list (number-sequence 4 120 4))
 
 ;;去掉烦人的警告铃声
 (setq visible-bell nil)
 
-;;启动Emacs自动设置为两个窗口(上下各一个 or 左右各一)
-;(split-window-vertically)
-;(split-window-horizontally)
-
 ;;不产生备份文件
 (setq make-backup-files nil)
-
-;;speedbar display all types of files
-(custom-set-variables
- '(speedbar-show-unknown-files t)
-)
 
 (provide 'base-settings)

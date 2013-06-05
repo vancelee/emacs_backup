@@ -7,10 +7,34 @@
 (setq speedbar-use-images nil)
 ;; sr-speedbar width
 (setq sr-speedbar-width-x 30)
+;;speedbar display all types of files
+(custom-set-variables
+ '(speedbar-show-unknown-files t)
+)
+
+;; jquery-doc
+(require 'jquery-doc)
+(add-hook 'js2-mode-hook 'jquery-doc-setup)
 
 ;; ido
 (require 'ido)
 (ido-mode t)
+
+;;php-mode
+(require 'php-mode)
+
+;;html helper mode
+;;(autoload 'html-helper-mode "html-helper-mode" "Yay HTML" t)
+
+;; js2-mode
+(autoload 'js2-mode "js2-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(setq-default js2-basic-offset 2)
+(setq-default js2-global-externs '("jQuery" "$"))
+
+;;yasnippet
+(require 'yasnippet)
+(yas-global-mode 1)
 
 ;; tabbar
 (require 'tabbar)
@@ -26,10 +50,9 @@
          (buffer-list))))
 ;; 设置默认主题
 (set-face-attribute 'tabbar-default nil
-                    :family "DejaVu Sans Mono"
-                    :background "#d0d0d0"
-                    :foreground "#d0d0d0"
-                    :height 0.8
+                    :family "Monaco"
+                    :background "#eeeeee"
+                    :foreground "#eeeeee"
                     )
 ;; 设置左边按钮
 (set-face-attribute 'tabbar-button nil
@@ -39,7 +62,7 @@
 ;; 设置当前tab
 (set-face-attribute 'tabbar-selected nil
                     :inherit 'tabbar-default
-                    :foreground "#eeeeee"
+                    :foreground "#ffffff"
                     :background "#5f005f"
                     :box '(:line-width 2 :color "#5f005f")
                     :weight 'bold
@@ -47,23 +70,11 @@
 ;; 设置非当前tab
 (set-face-attribute 'tabbar-unselected nil
                     :inherit 'tabbar-default
+					:foreground "#cccccc"
                     :background "#5f005f"
                     :box '(:line-width 2 :color "#5f005f")
                     )
 
-;;php-mode
-(require 'php-mode)
-
-;;html helper mode
-;;(autoload 'html-helper-mode "html-helper-mode" "Yay HTML" t)
-
-;; js2-mode
-(autoload 'js2-mode "js2-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-
-;;org-mode
-(require 'org-install)
-(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 ;; export HTML style
 (setq org-export-html-style-include-default nil)
 (setq org-export-html-style-include-scripts nil)
