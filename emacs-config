@@ -12,6 +12,7 @@
 ;;加载设置
 (add-to-list 'load-path "~/.emacsmy")
 (add-to-list 'custom-theme-load-path "~/.emacsmy/themes")
+(add-to-list 'load-path "~/.emacsmy/yasnippet")
 (setq load-path (cons "~/.emacsmy/org-7.9.3e/lisp" load-path))
 
 ;;字体设置
@@ -19,7 +20,7 @@
 (set-locale-environment "UTF-8")
 ;; Setting English Font
 (if window-system
-  (set-face-attribute 'default nil :font "Monaco-11"))
+  (set-face-attribute 'default nil :font "Monaco-10"))
 ;; Chinese Font
 (if window-system
   (set-fontset-font nil 'han "FZZhunYuan-M02"))
@@ -35,8 +36,8 @@
 (setq inhibit-startup-message t)
 (setq initial-scratch-message "")
 ;;Frame Size
-(if window-system
-    (set-frame-size (selected-frame) 85 35))
+;;(if window-system
+;;    (set-frame-size (selected-frame) 85 35))
 ;; 高亮当前行
 (global-hl-line-mode t)
 
@@ -53,9 +54,10 @@
 (require 'load-modes)
 
 ;;自动补全
+(add-to-list 'load-path "~/.emacsmy/auto-complete-1.4/")
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacsmy/ac-dict")
 (ac-config-default)
-(global-auto-complete-mode t)
+;;(global-auto-complete-mode t)
 ;; start completion when entered 3 characters
-(setq ac-auto-start 3)
+;;(setq ac-auto-start 3)
+;;(define-key ac-complete-mode-map "RET" 'nil)

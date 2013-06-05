@@ -12,12 +12,12 @@
    `(success ((t (:foreground "#fce94f"))))
    `(mode-line ((t (:foreground "#ffffff" :background "#5f005f")))) ;; 当前mode-line
    `(mode-line-inactive ((t (:foreground "#bcbcbc" :background "#5f005f")))) ;; 其他mode-line
-   `(fringe ((t (:background "#dadada")))) ;; 边框
+   `(fringe ((t (:background "#eeeeee")))) ;; 边框
    `(minibuffer-prompt ((t (:foreground "#5f005f" :bold t)))) ;; minibuffer
-   `(linum ((t (:foreground "#9e9e9e" :background "#eeeeee")))) ;; 行号
+   `(linum ((t (:foreground "#585858" :background "#e4e4e4" )))) ;; 行号
    ;; Highlighting faces
    `(highlight ((t (:background "#cd00cd"))))
-   `(hl-line ((t (:background "#dadada")))) ;; 高亮当前行
+   `(hl-line ((t (:background "#e4e4e4")))) ;; 高亮当前行
    `(region ((t (:background "#00ffff")))) ;; 选中的文字
    `(secondary-selection ((t (:background "#5fffff"))))
    `(isearch ((t (:foreground "#ffffff" :background "#875fff")))) ;; 第一个搜索到的字段
@@ -25,9 +25,9 @@
    ;; Font lock faces
    `(font-lock-builtin-face ((t (:foreground "#878700"))))
    `(font-lock-comment-face ((t (:foreground "#9e9e9e")))) ;; 注释
-   `(font-lock-constant-face ((t (:foreground "#444444")))) ;; 常量
+   `(font-lock-constant-face ((t (:foreground "#303030")))) ;; 常量
    `(font-lock-function-name-face ((t (:foreground "#5f00ff")))) ;; 函数名
-   `(font-lock-keyword-face ((t (:foreground "#444444" :bold t)))) ;; 关键字
+   `(font-lock-keyword-face ((t (:foreground "#303030" :bold t)))) ;; 关键字
    `(font-lock-string-face ((t (:foreground "#878700")))) ;; 字符串
    `(font-lock-type-face ((t (:foreground "#121212"))))
    `(font-lock-variable-name-face ((t (:foreground "#5f00ff")))) ;; 变量名
@@ -45,7 +45,7 @@
    `(org-level-6 ((t (:foreground "#00cd00"))))
    `(org-link ((t (:foreground "#875fff"))))
    ;; Ido mode faces
-   '(ido-first-match ((t (:foreground "#626262" :weight bold))))
+   '(ido-first-match ((t (:foreground "#ffffff" :weight bold :background "#875fff"))))
    ;; Message faces
    `(message-header-name ((t (:foreground "#5c5cff"))))
    `(message-header-cc ((t (:foreground "#4e4e4e"))))
